@@ -36,6 +36,12 @@ jobs:
       - uses: actions-for-kicad/setup-kicad@main
         with:
           version: ${{ matrix.kicad-version }}
+      - name: test
+        run: |
+          dpkg --list|grep kicad| awk '{print $2}'
+          kicad --version
+          ls /usr/share/kicad
+          ls /usr/share/kicad/symbols
       - name: Check file
         id: check_file
         uses: ./
