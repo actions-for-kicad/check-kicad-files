@@ -38,7 +38,7 @@ jobs:
           version: ${{ matrix.kicad-version }}
       - name: test
         run: |
-          cp /usr/share/kicad/template/. ~/.config/kicad/8.0/
+          cp -r /usr/share/kicad/template/. ~/.config/kicad/8.0/
       - name: Check file
         id: check_file
         uses: ./
