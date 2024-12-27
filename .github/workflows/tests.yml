@@ -40,15 +40,9 @@ jobs:
         run: |
           dpkg --list|grep kicad| awk '{print $2}'
           kicad-cli --version
-          ls /usr/share/kicad
-          ls /usr/share/kicad/symbols
-          echo "KICAD_SYMBOL_DIR=$KICAD_SYMBOL_DIR"
-      - name: Set KiCad Environment Paths
-        run: |
-          echo "KICAD_SYMBOL_DIR=/usr/share/kicad/symbols" >> $GITHUB_ENV
-          echo "KICAD_TEMPLATE_DIR=/usr/share/kicad/template" >> $GITHUB_ENV
-          echo "KICAD_FOOTPRINT_DIR=/usr/share/kicad/footprints" >> $GITHUB_ENV
-          echo "KICAD_3DMODEL_DIR=/usr/share/kicad/3dmodels" >> $GITHUB_ENV
+          ls ~/.config/kicad
+          ls ~/.config/kicad/8.0
+          cat ~/.config/kicad/8.0/sym-lib-table
       - name: Check file
         id: check_file
         uses: ./
