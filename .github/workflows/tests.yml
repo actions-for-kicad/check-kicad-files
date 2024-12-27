@@ -42,6 +42,7 @@ jobs:
           kicad-cli --version
           ls /usr/share/kicad
           ls /usr/share/kicad/symbols
+          echo "KICAD_SYMBOL_DIR=$KICAD8_SYMBOL_DIR"
       - name: Check file
         id: check_file
         uses: ./
