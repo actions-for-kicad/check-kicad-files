@@ -4,8 +4,6 @@ ERC and DRC test for KiCad files.
 
 > **_NOTE:_** Minimal KiCad version is 8.0.
 
-# TODO update
-
 # Usage
 
 See [action.yml](action.yml)
@@ -39,26 +37,10 @@ Description: The location to the schematic or PCB file.
 
 Required: `True`
 
-Description: Export type, choose one of the following:
+Check type, choose one of the following:
 
-- schematic_pdf
-- schematic_svg
-- schematic_bom
-- schematic_netlist
-- pcb_step
-- pcb_pos
-- pcb_gerbers
-- pcb_drill
-- pcb_gerbers_drill
-
-### `layers`
-
-Required: `False`
-
-Description: The layers that need to be exported in a comma seperated list. Example: "F.Cu,B.cu". The layers can be set by the following types:
-
-- pcb_gerbers
-- pcb_gerbers_drill
+- erc
+- drc
 
 # License
 
