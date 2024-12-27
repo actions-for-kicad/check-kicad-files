@@ -37,6 +37,7 @@ jobs:
         with:
           version: ${{ matrix.kicad-version }}
       - name: Check file
+        id: check_file
         uses: ./
         with:
           file: ${{ matrix.file }}
