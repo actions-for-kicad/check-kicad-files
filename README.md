@@ -18,11 +18,6 @@ steps:
     with:
       file: "./file.kicad_sch"
       type: "erc"
-  - name: Upload
-    uses: actions/upload-artifact@v4
-    with:
-      name: "file.pdf"
-      path: "./file.pdf"
 ```
 
 ## Inputs
