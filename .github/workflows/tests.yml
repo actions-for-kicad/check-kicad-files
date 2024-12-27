@@ -39,7 +39,7 @@ jobs:
       - name: test
         run: |
           dpkg --list|grep kicad| awk '{print $2}'
-          kicad --version
+          kicad-cli --version
           ls /usr/share/kicad
           ls /usr/share/kicad/symbols
       - name: Check file
