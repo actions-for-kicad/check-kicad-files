@@ -36,10 +36,6 @@ jobs:
       - uses: actions-for-kicad/setup-kicad@main
         with:
           version: ${{ matrix.kicad-version }}
-      - name: test
-        run: |
-          mkdir -p ~/.config/kicad/8.0/
-          cp -r /usr/share/kicad/template/. ~/.config/kicad/8.0/
       - name: Check file
         id: check_file
         uses: ./
