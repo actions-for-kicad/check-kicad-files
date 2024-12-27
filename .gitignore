@@ -6,3 +6,4 @@ kicad-project-backups
 fp-info-cache
 *.bak
 *.rpt
+*.kicad_pcb.lck

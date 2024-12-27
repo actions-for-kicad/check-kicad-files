@@ -4,24 +4,22 @@ ERC and DRC test for KiCad files.
 
 > **_NOTE:_** Minimal KiCad version is 8.0.
 
-# TODO update
-
 # Usage
 
 See [action.yml](action.yml)
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions-for-kicad/setup-kicad@v1.0
+  - uses: actions/checkout@v4
+  - uses: actions-for-kicad/setup-kicad@v1
     with:
-      version: "7.0"
-  - uses: actions-for-kicad/generate-kicad-files@v1.0
+      version: "8.0"
+  - uses: actions-for-kicad/check-kicad-files@v1
     with:
       file: "./file.kicad_sch"
-      type: "schematic_pdf"
+      type: "erc"
   - name: Upload
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v4
     with:
       name: "file.pdf"
       path: "./file.pdf"
@@ -39,26 +37,10 @@ Description: The location to the schematic or PCB file.
 
 Required: `True`
 
-Description: Export type, choose one of the following:
+Check type, choose one of the following:
 
-- schematic_pdf
-- schematic_svg
-- schematic_bom
-- schematic_netlist
-- pcb_step
-- pcb_pos
-- pcb_gerbers
-- pcb_drill
-- pcb_gerbers_drill
-
-### `layers`
-
-Required: `False`
-
-Description: The layers that need to be exported in a comma seperated list. Example: "F.Cu,B.cu". The layers can be set by the following types:
-
-- pcb_gerbers
-- pcb_gerbers_drill
+- erc
+- drc
 
 # License
 
