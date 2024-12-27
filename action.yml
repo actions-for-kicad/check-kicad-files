@@ -1,0 +1,24 @@
+name: "Check kicad files"
+description: "Generate kicad files like a pdf schematic, bom files, etc."
+branding:
+  icon: "check-circle"
+  color: "yellow"
+
+inputs:
+  file:
+    description: "The location to the schematic or PCB file."
+    required: true
+  type:
+    description: >
+      Check type, choose one of the following:
+      - erc
+      - drc
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - id: check-files
+      name: "Check files."
+      run: ${{ github.action_path }}/check-files.sh "${{ inputs.file }}" "${{ inputs.type }}"
+      shell: bash

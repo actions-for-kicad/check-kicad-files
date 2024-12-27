@@ -1,0 +1,55 @@
+name: Tests
+
+on:
+  push:
+    paths-ignore:
+      - "LICENSE"
+      - "*.md"
+
+jobs:
+  check-export:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        kicad-version: ["8.0"]
+        test-name: ["erc-failure", "erc-success", "drc-failure", "drc-success"]
+        include:
+          - test-name: erc-failure
+            type: erc
+            file: tests/kicad-project-failure/kicad-project.kicad_sch
+            result: failure
+          - test-name: erc-success
+            type: erc
+            file: tests/kicad-project-success/kicad-project.kicad_sch
+            result: success
+          - test-name: drc-failure
+            type: drc
+            file: tests/kicad-project-failure/kicad-project.kicad_pcb
+            result: failure
+          - test-name: drc-success
+            type: drc
+            file: tests/kicad-project-success/kicad-project.kicad_pcb
+            result: success
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-for-kicad/setup-kicad@main
+        with:
+          version: ${{ matrix.kicad-version }}
+      - name: Check file
+        uses: ./
+        with:
+          file: ${{ matrix.file }}
+          type: ${{ matrix.type }}
+        continue-on-error: true
+      - name: Verify Check File Step Result
+        run: |
+          if [[ "${{ matrix.result }}" == "failure" && "${{ steps.check_file.outcome }}" != "failure" ]]; then
+            echo "Expected failure, but step succeeded!"
+            exit 1
+          fi
+          if [[ "${{ matrix.result }}" == "success" && "${{ steps.check_file.outcome }}" == "failure" ]]; then
+            echo "Expected success, but step failed!"
+            exit 1
+          fi
+        shell: bash
