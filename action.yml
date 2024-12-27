@@ -1,5 +1,5 @@
-name: "Check KiCad files"
-description: "Generate KiCad files like a pdf schematic, bom files, etc."
+name: "Check kicad files"
+description: "Run you ERC and DRC tests for KiCad."
 branding:
   icon: "check-circle"
   color: "yellow"
