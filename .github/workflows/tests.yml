@@ -38,12 +38,7 @@ jobs:
           version: ${{ matrix.kicad-version }}
       - name: test
         run: |
-          dpkg --list|grep kicad| awk '{print $2}'
-          kicad-cli --version
-          ls ~/.config/kicad
-          ls ~/.config/kicad/8.0
-          cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/8.0/
-          cat ~/.config/kicad/8.0/sym-lib-table
+          cp /usr/share/kicad/template/* ~/.config/kicad/8.0/
       - name: Check file
         id: check_file
         uses: ./
