@@ -12,16 +12,16 @@ See [action.yml](action.yml)
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions-for-kicad/setup-kicad@v1.0
+  - uses: actions/checkout@v4
+  - uses: actions-for-kicad/setup-kicad@v1
     with:
-      version: "7.0"
-  - uses: actions-for-kicad/generate-kicad-files@v1.0
+      version: "8.0"
+  - uses: actions-for-kicad/check-kicad-files@v1
     with:
       file: "./file.kicad_sch"
-      type: "schematic_pdf"
+      type: "erc"
   - name: Upload
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v4
     with:
       name: "file.pdf"
       path: "./file.pdf"

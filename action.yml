@@ -20,5 +20,5 @@ runs:
   steps:
     - id: check-files
       name: "Check files."
-      run: ${{ github.action_path }}/check-files.sh "${{ inputs.file }}" "${{ inputs.type }}"
+      run: ${{ github.action_path }}/check-files.sh --type "${{ inputs.type }}" "${{ inputs.file }}"
       shell: bash
