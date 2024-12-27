@@ -36,12 +36,19 @@ jobs:
       - uses: actions-for-kicad/setup-kicad@main
         with:
           version: ${{ matrix.kicad-version }}
+      - name: test
+        run: |
+          dpkg --list|grep kicad| awk '{print $2}'
+          kicad-cli --version
+          ls /usr/share/kicad
+          ls /usr/share/kicad/symbols
+          echo "KICAD_SYMBOL_DIR=$KICAD_SYMBOL_DIR"
       - name: Set KiCad Environment Paths
         run: |
-          echo "KICAD8_SYMBOL_DIR=/usr/share/kicad/symbols" >> $GITHUB_ENV
-          echo "KICAD8_TEMPLATE_DIR=/usr/share/kicad/template" >> $GITHUB_ENV
-          echo "KICAD8_FOOTPRINT_DIR=/usr/share/kicad/footprints" >> $GITHUB_ENV
-          echo "KICAD8_3DMODEL_DIR=/usr/share/kicad/3dmodels" >> $GITHUB_ENV
+          echo "KICAD_SYMBOL_DIR=/usr/share/kicad/symbols" >> $GITHUB_ENV
+          echo "KICAD_TEMPLATE_DIR=/usr/share/kicad/template" >> $GITHUB_ENV
+          echo "KICAD_FOOTPRINT_DIR=/usr/share/kicad/footprints" >> $GITHUB_ENV
+          echo "KICAD_3DMODEL_DIR=/usr/share/kicad/3dmodels" >> $GITHUB_ENV
       - name: Check file
         id: check_file
         uses: ./
