@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        kicad-version: ["8.0"]
+        kicad-version: ["8.0", "9.0"]
         test-name: ["erc-failure", "erc-success", "drc-failure", "drc-success"]
         include:
           - test-name: erc-failure
