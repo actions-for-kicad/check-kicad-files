@@ -1,5 +1,8 @@
 # check-kicad-files
 
+> ⚠️ **This repository is archived and no longer maintained.**  
+> Please use my new and improved all in one [KiCad action](https://github.com/marketplace/actions/kicad-actions).
+
 ERC and DRC test for KiCad files.
 
 > **_NOTE:_** Minimal KiCad version is 8.0.
